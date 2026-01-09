@@ -8,3 +8,9 @@ doing with.
 # Potential Idea:
 Have the ladybug give only facts about bugs or maybe just have a website of a ladybug that spits out
 chatgpt answers?
+
+For now this will be the playground to my horrendous ideas.
+
+
+
+
