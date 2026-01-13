@@ -23,15 +23,14 @@ def main():
     
 
 
-def run():
+def run():  
     while True:
-        user_question = input("Ask a question for the Lady: ")
-        print(user_question  + "\n")
         # So now would be using chatgpt for the response?
-
-        print("Do you have a question for the lady(answer no if done)?")
+        user_question = input("Do you have a question for the lady(answer no if done)?").lower()
+        
         if (user_question == "no"):
             break
+        print(user_question  + "\n")
 
 
 
