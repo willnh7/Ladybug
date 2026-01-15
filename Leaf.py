@@ -22,18 +22,18 @@ def run():
     while True:
         # So now would be using chatgpt for the response?
         user_question = input("Do you have a question for the lady(answer no if done)?").lower()
-
+        # This is the user question that should create a image of this for the ladybug to traverse/ fly across.
         if (user_question == "no"):
             break
         print(user_question  + "\n")
 
+        # There is now a functional response to text by the gemini ai model(gemini-2.5-flash-lite) 
         print("Answer:")
         client = genai.Client()
         response = client.models.generate_content(
-            model="gemini-3-flash-preview",
+            model="gemini-2.5-flash-lite",
             contents=user_question + " Use 2 sentences at most.",
         )
-
         print(response.text)
 
         
