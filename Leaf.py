@@ -15,28 +15,33 @@
 #} 
 
 
-def main():
-    run()
-
-
-    
-    
-
+import os
+# Quota reached with openai, Switching to gemini.
+# from openai import OpenAI
 
 def run():  
     while True:
         # So now would be using chatgpt for the response?
         user_question = input("Do you have a question for the lady(answer no if done)?").lower()
-        
+
         if (user_question == "no"):
             break
         print(user_question  + "\n")
 
+        client = OpenAI()
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo", # Or another model like "gpt-4"
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": user_question}
+            ],
+            max_tokens=150 # Limits the length of the response
+        )
+        response_content = response.choices[0].message.content
+        print(response_content)
 
-
-
-
-
+def main():
+    run()
 
 if __name__ == '__main__':
     main()
