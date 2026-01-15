@@ -16,8 +16,7 @@
 
 
 import os
-# Quota reached with openai, Switching to gemini.
-# from openai import OpenAI
+from google import genai
 
 def run():  
     while True:
@@ -28,17 +27,16 @@ def run():
             break
         print(user_question  + "\n")
 
-        client = OpenAI()
-        response = client.chat.completions.create(
-            model="gpt-3.5-turbo", # Or another model like "gpt-4"
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": user_question}
-            ],
-            max_tokens=150 # Limits the length of the response
+        print("Answer:")
+        client = genai.Client()
+        response = client.models.generate_content(
+            model="gemini-3-flash-preview",
+            contents=user_question + " Use 2 sentences at most.",
         )
-        response_content = response.choices[0].message.content
-        print(response_content)
+
+        print(response.text)
+
+        
 
 def main():
     run()
